@@ -1,3 +1,16 @@
+.unnerdle {
+    font-family: sans-serif;
+    color: #820458;
+    font-size: 1.8rem;
+    font-weight: 300;
+}
+
+.logo {
+    height: 32px;
+    vertical-align: bottom;
+    padding-right: 8px;
+}
+
 html, body {
 	position: relative;
 	width: 100%;
@@ -12,52 +25,163 @@ body {
 	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
 }
 
-a {
-	color: rgb(0,100,200);
-	text-decoration: none;
+#keyboard .row button {
+    font-family: inherit;
+    font-weight: bold;
+    border: 0;
+    padding: 0;
+    margin: 4px 4px 0 0;
+    height: 58px;
+    border-radius: 4px;
+    cursor: pointer;
+    user-select: none;
+    background-color: var(--bg-keys);
+    color: var(--txt-black);
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-transform: uppercase;
+    box-shadow: 0px 0px 5px 0px var(--shadow);
 }
 
-a:hover {
-	text-decoration: underline;
+#keyboard .row {
+    display: flex;
+    width: 100%;
+    margin: 0 auto 8px;
+    touch-action: manipulation;
 }
 
-a:visited {
-	color: rgb(0,80,160);
+#keyboard {
+    margin: 0 8px;
+    user-select: none;
+    background-color: var(--bg-keyboard);
+    padding: 8px;
 }
 
-label {
-	display: block;
+game-keyboard {
+    height: var(--keyboard-height);
 }
 
-input, button, select, textarea {
-	font-family: inherit;
-	font-size: inherit;
-	-webkit-padding: 0.4em 0;
-	padding: 0.4em;
-	margin: 0 0 0.5em 0;
-	box-sizing: border-box;
-	border: 1px solid #ccc;
-	border-radius: 2px;
+#game {
+    width: 100%;
+    max-width: var(--game-max-width);
+    margin: 0 auto;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
 }
 
-input:disabled {
-	color: #ccc;
+#board-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-button {
-	color: #333;
-	background-color: #f4f4f4;
-	outline: none;
+#board {
+    display: grid;
+    grid-template-rows: repeat(6, 1fr);
+    grid-gap: 5px;
+    padding: 10px;
+    box-sizing: border-box;
+    width: 100%;
+    overflow:auto;
 }
 
-button:disabled {
-	color: #999;
+.row {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-gap: 5px;
 }
 
-button:not(:disabled):active {
-	background-color: #ddd;
+.tile[data-animation='pop'] {
+    animation-name: PopIn;
+    animation-duration: 100ms;
+}
+@keyframes PopIn {
+    from {
+        transform: scale(0.8);
+        opactiy: 0;
+    }
+
+    40% {
+        transform: scale(1.1);
+        opacity: 1;
+    }
 }
 
-button:focus {
-	border-color: #666;
+.tile[data-state='absent'] {
+    background-color: var(--bg-absent);
+}
+
+.tile[data-state='correct'] {
+    background-color: var(--bg-correct);
+}
+
+.tile[data-state='present'] {
+    background-color: var(--bg-present);
+} 
+
+.tile[data-state='tbd'] {
+    background-color: var(--bg-blank);
+    color: var(--txt-black);
+    border: 2px solid var(--shadow);
+}
+
+.tile[data-state='empty'] {
+    background-color: var(--bg-blank);
+}
+
+.tile {
+    width: 56px;
+    height: 56px;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 4px;
+    font-size: 2rem;
+    line-height: 2rem;
+    font-weight: bold;
+    vertical-align: middle;
+    box-sizing: border-box;
+    color: var(--bg-blank);
+    text-transform: uppercase;
+    user-select: none;
+    opacity: 1;
+}
+
+.suggestion#title {
+    margin-bottom: 5px;
+    font-size: larger;
+}
+
+.suggestion {
+    font-family: inherit;
+    font-weight: bold;
+    text-transform: uppercase;
+    text-align: center;
+    height:20px;
+    display:block;
+}
+
+:root {
+    --color-black: #000000;
+    --color-burgundy: #820458;
+    --color-teal: #398874;
+    --color-white: #FFFFFF;
+}
+
+:root {
+    --bg-blank: #F1F3F9;
+    --bg-keyboard: #DEE3ED;
+    --bg-present: #C5B051;
+    --shadow: #E0E0E0
+}
+
+:root {
+    --bg-absent: var(--color-black);
+    --bg-correct: var(--color-burgundy);
+    --bg-keys: var(--color-white);
+    --bg-present: var(--color-teal);
+    --txt-black: var(--color-black);
 }
