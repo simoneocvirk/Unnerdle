@@ -4,7 +4,7 @@
 	import { isSolutionValidForEntry } from './utils/isSolutionValidForEntry.js';
 	import { sortObject } from './utils/sortObject.js';
 
-	let WORDLENGTH = 5;
+	let WORDLENGTH = 8;
 	let showInstructions = false;
 	let darkMode = false;
 
@@ -109,7 +109,7 @@
 		</div>
 	</header>
 	<div id="board-container">
-		<div id="board" style="width: 350px; height: 420px;">
+		<div id="board">
 			{#each entries as entry, e_index}
 				<game-row length={WORDLENGTH}>
 					<div class="row">
@@ -136,67 +136,50 @@
 			</div>
 		</div>
 	</div>
-	<game-keyboard>
-		<div id="keyboard">
-			<div class="row">
-				<button on:click={() => keyboardEntry("q")}>q</button>
-				<button on:click={() => keyboardEntry("w")}>w</button>
-				<button on:click={() => keyboardEntry("e")}>e</button>
-				<button on:click={() => keyboardEntry("r")}>r</button>
-				<button on:click={() => keyboardEntry("t")}>t</button>
-				<button on:click={() => keyboardEntry("y")}>y</button>
-				<button on:click={() => keyboardEntry("u")}>u</button>
-				<button on:click={() => keyboardEntry("i")}>i</button>
-				<button on:click={() => keyboardEntry("o")}>o</button>
-				<button on:click={() => keyboardEntry("p")}>p</button>
-			</div>
-			<div class="row">
-				<div class="spacer half"></div>
-				<button on:click={() => keyboardEntry("a")}>a</button>
-				<button on:click={() => keyboardEntry("s")}>s</button>
-				<button on:click={() => keyboardEntry("d")}>d</button>
-				<button on:click={() => keyboardEntry("f")}>f</button>
-				<button on:click={() => keyboardEntry("g")}>g</button>
-				<button on:click={() => keyboardEntry("h")}>h</button>
-				<button on:click={() => keyboardEntry("j")}>j</button>
-				<button on:click={() => keyboardEntry("k")}>k</button>
-				<button on:click={() => keyboardEntry("l")}>l</button>
-				<div class="spacer half"></div>
-			</div>
-			<div class="row">
-				<button class="one-and-a-half" on:click={() => keyboardEntry("Enter")}>enter</button>
-				<button on:click={() => keyboardEntry("z")}>z</button>
-				<button on:click={() => keyboardEntry("x")}>x</button>
-				<button on:click={() => keyboardEntry("c")}>c</button>
-				<button on:click={() => keyboardEntry("v")}>v</button>
-				<button on:click={() => keyboardEntry("b")}>b</button>
-				<button on:click={() => keyboardEntry("n")}>n</button>
-				<button on:click={() => keyboardEntry("m")}>m</button>
-				<button class="one-and-a-half" on:click={() => keyboardEntry("Backspace")}>
-					<game-icon icon="backspace">
-						<svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24">
-							<path fill="var(--color-tone-1)" d="M22 3H7c-.69 0-1.23.35-1.59.88L0 12l5.41 8.11c.36.53.9.89 1.59.89h15c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H7.07L2.4 12l4.66-7H22v14zm-11.59-2L14 13.41 17.59 17 19 15.59 15.41 12 19 8.41 17.59 7 14 10.59 10.41 7 9 8.41 12.59 12 9 15.59z"></path>
-						</svg>
-					</game-icon>
-				</button>
-			</div>
+	<div id="keyboard">
+		<div class="row">
+			<button on:click={() => keyboardEntry("1")}>1</button>
+			<button on:click={() => keyboardEntry("2")}>2</button>
+			<button on:click={() => keyboardEntry("3")}>3</button>
+			<button on:click={() => keyboardEntry("4")}>4</button>
+			<button on:click={() => keyboardEntry("5")}>5</button>
+			<button on:click={() => keyboardEntry("6")}>6</button>
+			<button on:click={() => keyboardEntry("7")}>7</button>
+			<button on:click={() => keyboardEntry("8")}>8</button>
+			<button on:click={() => keyboardEntry("9")}>9</button>
+			<button on:click={() => keyboardEntry("0")}>0</button>
 		</div>
-	</game-keyboard>
-	<game-page style="display:{showInstructions ? "block":"none"}">
-		<strong>HOW TO USE</strong>
-		<game-help page slot="content">
-			<section>
-				<div class="instructions">
-					<p>You should already know what <strong><a href="https://www.powerlanguage.co.uk/wordle/">WORDLE</a></strong> is if you're here. It's the word-game sensation by <a href="https://www.powerlanguage.co.uk/">Josh Wardle</a> taking the world by storm.</p>
-					<p>This is a tool to help you pick the best next answer.</p>
-					<p>After entering a word, click on the tiles to flip them to how they appear on Wordle.</p>
-					<p>This website is purposefully "unplayable". It is just a tool to help you when you're stuck. If you want to play Wordle, go to the <a href="https://www.powerlanguage.co.uk/wordle/">THE OFFICIAL WEBSITE</a></p>
-					<p>The interface is clunky and sloppy because I don't know what I'm doing.</p>
-					<p><strong><a href="https://twitter.com/moodyhikmet">I'm on Twitter as well</a></strong></p>
-					<p>You can find the source code for this site at this <strong><a href="https://github.com/sadmoody/unwordle-svelte">Github Repo</a></strong></p>
-					<p>Yes if you use this website when you're playing - you're cheating. This is supposed to be a poor-man's Stockfish but for Wordle.</p>
-				</div>
-			</section>
-		</game-help>
-	</game-page>
+		<div class="row">
+			<button on:click={() => keyboardEntry("+")}>+</button>
+			<button on:click={() => keyboardEntry("-")}>-</button>
+			<button on:click={() => keyboardEntry("*")}>*</button>
+			<button on:click={() => keyboardEntry("/")}>/</button>
+			<button on:click={() => keyboardEntry("=")}>=</button>
+			<button on:click={() => keyboardEntry("Enter")}>Enter</button>
+			<button class="one-and-a-half" on:click={() => keyboardEntry("Backspace")}>
+				<game-icon icon="backspace">
+					<svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24">
+						<path fill="var(--color-tone-1)" d="M22 3H7c-.69 0-1.23.35-1.59.88L0 12l5.41 8.11c.36.53.9.89 1.59.89h15c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H7.07L2.4 12l4.66-7H22v14zm-11.59-2L14 13.41 17.59 17 19 15.59 15.41 12 19 8.41 17.59 7 14 10.59 10.41 7 9 8.41 12.59 12 9 15.59z"></path>
+					</svg>
+				</game-icon>
+			</button>
+		</div>
+		<div class="row">
+			<button class="one-and-a-half" on:click={() => keyboardEntry("Enter")}>enter</button>
+			<button on:click={() => keyboardEntry("z")}>z</button>
+			<button on:click={() => keyboardEntry("x")}>x</button>
+			<button on:click={() => keyboardEntry("c")}>c</button>
+			<button on:click={() => keyboardEntry("v")}>v</button>
+			<button on:click={() => keyboardEntry("b")}>b</button>
+			<button on:click={() => keyboardEntry("n")}>n</button>
+			<button on:click={() => keyboardEntry("m")}>m</button>
+			<button class="one-and-a-half" on:click={() => keyboardEntry("Backspace")}>
+				<game-icon icon="backspace">
+					<svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24">
+						<path fill="var(--color-tone-1)" d="M22 3H7c-.69 0-1.23.35-1.59.88L0 12l5.41 8.11c.36.53.9.89 1.59.89h15c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H7.07L2.4 12l4.66-7H22v14zm-11.59-2L14 13.41 17.59 17 19 15.59 15.41 12 19 8.41 17.59 7 14 10.59 10.41 7 9 8.41 12.59 12 9 15.59z"></path>
+					</svg>
+				</game-icon>
+			</button>
+		</div>
+	</div>
 </div>
